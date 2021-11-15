@@ -3,6 +3,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    row-gap: 25px;
+    background-color: #83868C;
     
 }
 
@@ -11,4 +13,9 @@ body {
     flex-flow: row wrap;
     justify-content: space-evenly;
     row-gap: 25px;
+    background-color: #B6B6B8;
+}
+
+#cardsId {
+    background-color: whitesmoke;
 }

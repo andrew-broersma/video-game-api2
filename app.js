@@ -21,10 +21,10 @@ function mapData (data) {
         console.log(index)
 
         let h5 = document.createElement("h5")
+        let h6 = document.createElement("h6")
+        let h6_2 = document.createElement("h6")
         let img = document.createElement("img")
         let link = document.createElement("a")
-        let span = document.createElement("span")
-        let span2 = document.createElement("span")
         let div = document.createElement("div")
         let div2 = document.createElement("div2")
         let br = document.createElement("br")
@@ -35,11 +35,15 @@ function mapData (data) {
         console.log(gName)
         let mScore = index.metacritic
         console.log(mScore)
-        let genre = index.genre // can't get inside of array
-        console.log(genre)
+        let genre = function () { if (index.genres.length > 0) {
+            return index.genres[0].name // can't get inside of array
+        } else {
+            return "No genre listed"
+        }}
+        console.log(genre())
         let background = index.background_image
         console.log(background)
-        let stores = index.stores.name // can't get inside of array
+        let stores = index.stores[0].store.name // can't get inside of array
         console.log(stores)
         let linkName = index.slug
 
@@ -47,13 +51,11 @@ function mapData (data) {
         img.className = "card-img-top"
         img.alt = gName
 
-        span.innerText = genre
-        span.id = "genreSpan"
-        span2.innerText = mScore
-        span.id = "metaSpan"
-
         h5.innerText = gName
         h5.className = "card-title"
+        h6.innerHTML = "Genre: " + "<strong>" + genre() + "</strong>"
+        h6.className = "card-subtitle mb-2 text-muted"
+        h6_2.innerHTML = "Metacritic Rating: " + "<strong>" + mScore + "</strong>"
 
         link.href = "https://rawg.io/games/" + linkName
         link.target = "_blank"
@@ -61,6 +63,7 @@ function mapData (data) {
         link.innerText = "Go to RAWG"
 
         div.className = "card"
+        div.id = "cardsId"
         div2.className = "card-body"
         div.style = "width: 18rem;"
 
@@ -68,11 +71,12 @@ function mapData (data) {
         div.appendChild(img)
         div.appendChild(div2)
         div2.appendChild(h5)
-        div2.appendChild(span)
+        div2.appendChild(br)
+        div2.appendChild(br)
+        div2.appendChild(h6)
+        div2.appendChild(h6_2)
         div2.appendChild(br)
         div2.appendChild(link)
-        div2.appendChild(span2)
-
     })
 }
 
