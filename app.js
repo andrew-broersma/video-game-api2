@@ -24,11 +24,11 @@ function mapData (data) {
         let h6 = document.createElement("h6")
         let h6_2 = document.createElement("h6")
         let img = document.createElement("img")
+        let p = document.createElement("p")
         let link = document.createElement("a")
         let div = document.createElement("div")
-        let div2 = document.createElement("div2")
+        let div2 = document.createElement("div")
         let br = document.createElement("br")
-        // let card = document.getElementById("firstCard") // needs to be different
         let wrapper = document.getElementById("cardWrapper")
 
         let gName = index.name
@@ -36,20 +36,22 @@ function mapData (data) {
         let mScore = index.metacritic
         console.log(mScore)
         let genre = function () { if (index.genres.length > 0) {
-            return index.genres[0].name // can't get inside of array
+            return index.genres[0].name // remember to check spelling
         } else {
             return "No genre listed"
         }}
         console.log(genre())
         let background = index.background_image
         console.log(background)
-        let stores = index.stores[0].store.name // can't get inside of array
+        let stores = index.stores[0].store.name // learn how to read
         console.log(stores)
         let linkName = index.slug
 
         img.src = background
         img.className = "card-img-top"
         img.alt = gName
+
+        p.innerText = " "
 
         h5.innerText = gName
         h5.className = "card-title"
@@ -71,7 +73,7 @@ function mapData (data) {
         div.appendChild(img)
         div.appendChild(div2)
         div2.appendChild(h5)
-        div2.appendChild(br)
+        div2.appendChild(p)
         div2.appendChild(br)
         div2.appendChild(h6)
         div2.appendChild(h6_2)
